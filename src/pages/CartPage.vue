@@ -14,12 +14,12 @@
         <img :src="product.item.image_one" class="w-32 h-32 object-cover" />
 
         <div class="flex flex-col justify-between pb-10 pt-4">
-          <div class="flex gap-5">
+          <div class="flex gap-5 capitalize">
             <div>{{ product.item.name }}</div>
             <div>{{ product.item.price }}$</div>
           </div>
 
-          <div class="flex justify-between px-4 border rounded-md">
+          <div class="flex justify-between px-4 border rounded-md max-w-32">
             <button
               @click="decreaseCountHandler(product)"
               class="w-7 h-7 flex justify-center"
