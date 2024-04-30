@@ -1,14 +1,13 @@
 <template>
-  <Suspense>
+  <MainLayout>
     <RouterView />
-
-    <template #fallback>loading...</template>
-  </Suspense>
+  </MainLayout>
 </template>
 
 <script setup>
 import { onBeforeMount } from 'vue';
 import { useProductsStore } from './stores/products.js';
+import MainLayout from './layouts/MainLayout.vue';
 
 onBeforeMount(async () => {
   const productsStore = useProductsStore();
