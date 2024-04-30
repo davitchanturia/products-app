@@ -3,9 +3,27 @@
     provided id is incorrect
   </div>
   <div v-else>
-    <router-link class="capitalize pl-20" :to="{ name: 'list' }"
-      >go back</router-link
+    <router-link
+      class="capitalize ml-20 border rounded-lg p-3 flex gap-3 w-32 hover:bg-yellow-300 hover:text-blue-900 transition-all duration-300"
+      :to="{ name: 'list' }"
     >
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        />
+      </svg>
+
+      go back
+    </router-link>
+
     <div class="flex items-center gap-20 mt-10 pl-20">
       <div>
         <div>name: {{ productResult?.name }}</div>
@@ -22,15 +40,15 @@
     </div>
 
     <div class="flex gap-5 items-center mt-10">
-      <img class="w-96 h-96 object-cover" :src="productResult?.image_one" />
+      <img class="w-96 h-96 object-contain" :src="productResult?.image_one" />
       <img
         v-if="productResult?.image_two"
-        class="w-96 h-96 object-cover"
+        class="w-96 h-96 object-contain"
         :src="productResult?.image_two"
       />
       <img
         v-if="productResult?.image_three"
-        class="w-96 h-96 object-cover"
+        class="w-96 h-96 object-contain"
         :src="productResult?.image_three"
       />
     </div>

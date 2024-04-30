@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen">
-    <div class="bg-blue-800 h-10">
+    <div class="bg-blue-800 w-full h-10 absolute top-0 left-0">
       <div
         class="w-full h-full max-w-7xl mx-auto flex justify-end items-center text-white capitalize"
       >
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <main class="w-full max-w-7xl pt-10 mx-auto">
+    <main class="w-full max-w-7xl pt-20 mx-auto">
       <slot />
     </main>
   </div>
