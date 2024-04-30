@@ -7,26 +7,28 @@ import CheckoutPage from './pages/CheckoutPage.vue';
 const routes = [
   {
     path: '/',
-    component: ListingPage
+    component: ListingPage,
+    name: 'list',
   },
   {
-    path: '/product/:id',
+    path: '/product/:id(\\d+)',
     component: ProductPage,
-    props: true
+    props: true,
+    name: 'product',
   },
   {
     path: '/cart',
-    component: CartPage
+    component: CartPage,
+    name: 'cart',
   },
   {
     path: '/checkout',
-    component: CheckoutPage
-  }
-
-]
+    component: CheckoutPage,
+    name: 'checkout',
+  },
+];
 
 export const router = createRouter({
   history: createWebHistory(),
-  routes
-})
-
+  routes,
+});

@@ -5,14 +5,18 @@
         v-for="product in productsStore.products"
         :key="product.id"
         :product
+        @click="router.push({ name: 'product', params: { id: product.id } })"
       />
     </div>
   </div>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import Card from '../components/Card.vue';
 import { useProductsStore } from '../stores/products.js';
+
+const router = useRouter();
 
 const productsStore = useProductsStore();
 </script>
