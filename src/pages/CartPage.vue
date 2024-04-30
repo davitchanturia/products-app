@@ -11,10 +11,21 @@
         v-for="product in cartStore.addedProducts"
         class="w-full border rounded-md px-2 py-1 flex gap-10 items-stretch mt-5 relative"
       >
-        <img :src="product.item.image_one" class="w-32 h-32 object-cover" />
+        <img
+          @click="
+            router.push({ name: 'product', params: { id: product.item.id } })
+          "
+          :src="product.item.image_one"
+          class="w-32 h-32 object-cover cursor-pointer"
+        />
 
         <div class="flex flex-col justify-between pb-10 pt-4">
-          <div class="flex gap-5 capitalize">
+          <div
+            @click="
+              router.push({ name: 'product', params: { id: product.item.id } })
+            "
+            class="flex gap-5 capitalize cursor-pointer"
+          >
             <div>{{ product.item.name }}</div>
             <div>{{ product.item.price }}$</div>
           </div>
@@ -60,7 +71,10 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import { useCartStore } from '../stores/cart';
+
+const router = useRouter();
 
 const cartStore = useCartStore();
 
