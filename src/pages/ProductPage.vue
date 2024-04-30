@@ -1,19 +1,13 @@
 <template>
-  <div
-    v-if="(productResult === undefined) | (productResult === null)"
-    class="w-full max-w-7xl mx-auto"
-  >
+  <div v-if="(productResult === undefined) | (productResult === null)">
     provided id is incorrect
   </div>
-  <div v-else class="w-full max-w-7xl mx-auto">
+  <div v-else>
     <router-link class="ml-20 capitalize" :to="{ name: 'list' }"
       >go back</router-link
     >
     <div class="flex items-center gap-20">
-      <img
-        class="w-80 h-80 object-cover"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqqYmJ_G_0wyluD8zPfrKIiHgpQL74WY7Bwwz8FTFtZA&s"
-      />
+      <img class="w-80 h-80 object-cover" :src="productResult?.image_one" />
 
       <div>
         <div>{{ productResult?.name }}</div>

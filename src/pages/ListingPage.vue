@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto w-full max-w-7xl mt-10 grid grid-cols-4 gap-4">
+  <div class="grid grid-cols-4 gap-4">
     <Card
       v-for="product in productsStore.products"
       :key="product.id"

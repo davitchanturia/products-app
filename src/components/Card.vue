@@ -2,10 +2,7 @@
   <div
     class="max-w-96 border rounded-lg px-2 py-1 flex gap-5 cursor-pointer col-span-1"
   >
-    <img
-      class="w-48 h-48"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqqYmJ_G_0wyluD8zPfrKIiHgpQL74WY7Bwwz8FTFtZA&s"
-    />
+    <img class="w-48 h-48" :src="product.image_one" />
 
     <div class="py-10">
       <div>{{ product.name }}</div>

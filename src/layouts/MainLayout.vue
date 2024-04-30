@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <main class="w-full pt-10">
+    <main class="w-full max-w-7xl pt-10 mx-auto">
       <slot />
     </main>
   </div>

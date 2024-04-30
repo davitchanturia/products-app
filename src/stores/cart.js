@@ -22,5 +22,21 @@ export const useCartStore = defineStore('cart', () => {
     addedProducts.value[index].count = addedProducts.value[index].count += 1;
   };
 
-  return { addedProducts, addNewProduct };
+  const decreaseProductCount = (productId) => {
+    const index = addedProducts.value.findIndex(
+      (element) => element.item.id === productId
+    );
+
+    addedProducts.value[index].count = addedProducts.value[index].count -= 1;
+  };
+
+  const deleteProduct = (productId) => {
+    const index = addedProducts.value.findIndex(
+      (element) => element.item.id === productId
+    );
+
+    addedProducts.value.splice(index, 1);
+  };
+
+  return { addedProducts, addNewProduct, decreaseProductCount, deleteProduct };
 });
