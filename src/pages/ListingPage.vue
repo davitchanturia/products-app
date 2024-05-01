@@ -3,6 +3,8 @@
     <IconLoading />
   </div>
 
+  <div v-else-if="productsStore.products.length === 0">No data, check api connection</div>
+
   <div v-else class="flex flex-col justify-between">
     <div
       class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
