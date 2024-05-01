@@ -14,7 +14,21 @@ export const getProducts = async () => {
     const res = await axios.get(path);
 
     return res;
+    
   } catch (error) {
     throw new Error('something went wrong');
+  }
+};
+
+export const getProduct = async (id) => {
+  try {
+    const path = import.meta.env.VITE_BACKEND_BASE + 'products/' + id;
+
+    const res = await axios.get(path);
+
+    return res;
+
+  } catch (error) {
+    return new Error('something went wrong');
   }
 };

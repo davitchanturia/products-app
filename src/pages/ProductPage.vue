@@ -1,7 +1,16 @@
 <template>
-  <div v-if="(productResult === undefined) | (productResult === null)">
-    provided id is incorrect
+  <div v-if="loading" class="w-full h-screen flex justify-center items-center ">
+    <div>
+      <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" >
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+      </svg>
+
+    </div>
   </div>
+
+  <div v-else-if="error">Product was not found</div>
+
   <div v-else>
     <router-link
       class="capitalize border rounded-lg p-3 flex gap-3 w-32 hover:bg-yellow-300 hover:text-blue-900 transition-all duration-300"
@@ -28,16 +37,16 @@
       class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-20 mt-10"
     >
       <div>
-        <div>name: {{ productResult?.name }}</div>
-        <div>price: {{ productResult?.price }}$</div>
+        <div>name: {{ product?.name }}</div>
+        <div>price: {{ product?.price }}$</div>
       </div>
 
       <div class="flex sm:items-center gap-5">
-        <BaseButton @clicked="checkoutStore.addNewProduct(productResult)">
+        <BaseButton @clicked="checkoutStore.addNewProduct(product)">
           buy
         </BaseButton>
         <div>OR</div>
-        <BaseButton @clicked="cartStore.addNewProduct(productResult)">
+        <BaseButton @clicked="cartStore.addNewProduct(product)">
           add to cart
         </BaseButton>
       </div>
@@ -46,17 +55,17 @@
     <div class="flex flex-wrap gap-5 items-center mt-10">
       <img
         class="w-96 h-96 object-contain mx-auto"
-        :src="productResult?.image_one"
+        :src="product?.image_one"
       />
       <img
-        v-if="productResult?.image_two"
+        v-if="product?.image_two"
         class="w-96 h-96 object-contain mx-auto"
-        :src="productResult?.image_two"
+        :src="product?.image_two"
       />
       <img
-        v-if="productResult?.image_three"
+        v-if="product?.image_three"
         class="w-96 h-96 object-contain mx-auto"
-        :src="productResult?.image_three"
+        :src="product?.image_three"
       />
     </div>
   </div>
@@ -65,14 +74,13 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
-import { useProductsStore } from '../stores/products.js';
-import { computed } from 'vue';
+import { ref, watch } from 'vue';
 import { useCartStore } from '../stores/cart';
 import { useCheckoutStore } from '../stores/checkout.js';
+import { getProduct } from '../services/products.js';
 
 const route = useRoute();
 
-const productsStore = useProductsStore();
 const cartStore = useCartStore();
 const checkoutStore = useCheckoutStore();
 
@@ -80,7 +88,23 @@ const props = defineProps({
   id: String,
 });
 
-const productResult = computed(() => {
-  return productsStore.products.find((item) => item.id === +route.params.id);
-});
+const loading = ref(true)
+const product = ref(null)
+const error = ref(null)
+
+watch(() => route.params.id, async (newVal, oldVal) => {
+  loading.value = true
+  try{
+    const res = await getProduct(newVal);
+
+    product.value = res.data
+  }catch(error){
+    error.value = error;
+  }finally{
+    setTimeout(() => {
+      loading.value = false
+    }, 1000)
+  }
+
+}, { immediate: true })
 </script>
