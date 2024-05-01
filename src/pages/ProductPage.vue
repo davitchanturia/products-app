@@ -31,7 +31,9 @@
       </div>
 
       <div class="flex items-center gap-5">
-        <BaseButton> buy </BaseButton>
+        <BaseButton @clicked="checkoutStore.addNewProduct(productResult)">
+          buy
+        </BaseButton>
         <div>OR</div>
         <BaseButton @clicked="cartStore.addNewProduct(productResult)">
           add to cart
@@ -61,11 +63,13 @@ import BaseButton from '../components/BaseButton.vue';
 import { useProductsStore } from '../stores/products.js';
 import { computed } from 'vue';
 import { useCartStore } from '../stores/cart';
+import { useCheckoutStore } from '../stores/checkout.js';
 
 const route = useRoute();
 
 const productsStore = useProductsStore();
 const cartStore = useCartStore();
+const checkoutStore = useCheckoutStore();
 
 const props = defineProps({
   id: String,

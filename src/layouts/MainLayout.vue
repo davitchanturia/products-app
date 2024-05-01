@@ -2,8 +2,9 @@
   <div class="w-full h-screen">
     <div class="bg-blue-800 w-full h-10 absolute top-0 left-0">
       <div
-        class="w-full h-full max-w-7xl mx-auto flex justify-end items-center text-white capitalize"
+        class="w-full h-full max-w-7xl mx-auto flex justify-end items-center gap-4 text-white capitalize"
       >
+        <router-link :to="{ name: 'checkout' }">checkout</router-link>
         <router-link :to="{ name: 'cart' }">
           <div class="relative">
             <svg
