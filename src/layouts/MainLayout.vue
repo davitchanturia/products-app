@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <main class="w-full max-w-7xl pt-20 mx-auto">
+    <main class="w-full max-w-7xl pt-20 mx-auto px-8 xl:px-0">
       <slot />
     </main>
   </div>

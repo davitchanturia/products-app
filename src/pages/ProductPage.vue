@@ -4,7 +4,7 @@
   </div>
   <div v-else>
     <router-link
-      class="capitalize ml-20 border rounded-lg p-3 flex gap-3 w-32 hover:bg-yellow-300 hover:text-blue-900 transition-all duration-300"
+      class="capitalize border rounded-lg p-3 flex gap-3 w-32 hover:bg-yellow-300 hover:text-blue-900 transition-all duration-300"
       :to="{ name: 'list' }"
     >
       <svg
@@ -24,13 +24,15 @@
       go back
     </router-link>
 
-    <div class="flex items-center gap-20 mt-10 pl-20">
+    <div
+      class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-20 mt-10"
+    >
       <div>
         <div>name: {{ productResult?.name }}</div>
         <div>price: {{ productResult?.price }}$</div>
       </div>
 
-      <div class="flex items-center gap-5">
+      <div class="flex sm:items-center gap-5">
         <BaseButton @clicked="checkoutStore.addNewProduct(productResult)">
           buy
         </BaseButton>
@@ -41,16 +43,19 @@
       </div>
     </div>
 
-    <div class="flex gap-5 items-center mt-10">
-      <img class="w-96 h-96 object-contain" :src="productResult?.image_one" />
+    <div class="flex flex-wrap gap-5 items-center mt-10">
+      <img
+        class="w-96 h-96 object-contain mx-auto"
+        :src="productResult?.image_one"
+      />
       <img
         v-if="productResult?.image_two"
-        class="w-96 h-96 object-contain"
+        class="w-96 h-96 object-contain mx-auto"
         :src="productResult?.image_two"
       />
       <img
         v-if="productResult?.image_three"
-        class="w-96 h-96 object-contain"
+        class="w-96 h-96 object-contain mx-auto"
         :src="productResult?.image_three"
       />
     </div>
