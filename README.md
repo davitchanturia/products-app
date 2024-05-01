@@ -68,8 +68,3 @@ npm run dev
 <h2 id="RESOURCES">Resources</h2>
 
 This is application's frontend side. It uses express.js as an api. you can check api repository [here](https://github.com/davitchanturia/products-app-back)
-
-
-  1.Backend Repository - https://github.com/RedberryInternship/davitchanturia-movie-quotes
-
-  2.Swagger Documentation - https://movie-quotes.chanturia.redberryinternship.ge/swagger
