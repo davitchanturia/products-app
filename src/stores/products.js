@@ -5,13 +5,18 @@ import { getProducts } from '../services/products.js';
 export const useProductsStore = defineStore('products', () => {
   const products = ref([]);
 
-  const initialize = async () => {
+  const totalPages = ref();
+  const currentPage = ref();
+
+  const fetchProducts = async () => {
     const response = await getProducts();
 
     if (response.statusText === 'OK') {
-      products.value = response.data;
+      products.value = response.data.products;
+      totalPages.value = response.data.totalPages;
+      currentPage.value = response.data.currentPage;
     }
   };
 
-  return { products, initialize };
+  return { products, fetchProducts, totalPages, currentPage };
 });

@@ -9,7 +9,12 @@
       />
     </div>
 
-    <div class="mt-10">pagination goes here</div>
+    <div class="mt-10">
+      <ThePagination
+        :totalPages="productsStore.totalPages"
+        :currentPage="productsStore.currentPage"
+      />
+    </div>
   </div>
 </template>
 
@@ -17,6 +22,7 @@
 import { useRouter } from 'vue-router';
 import Card from '../components/Card.vue';
 import { useProductsStore } from '../stores/products.js';
+import ThePagination from '../components/ThePagination.vue';
 
 const router = useRouter();
 

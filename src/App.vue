@@ -11,6 +11,6 @@ import MainLayout from './layouts/MainLayout.vue';
 
 onBeforeMount(async () => {
   const productsStore = useProductsStore();
-  await productsStore.initialize();
+  await productsStore.fetchProducts();
 });
 </script>
