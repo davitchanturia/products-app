@@ -37,6 +37,8 @@
           +
         </button>
       </div>
+
+      <div v-else>Quantity: {{ product.count }}x</div>
     </div>
 
     <button

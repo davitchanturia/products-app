@@ -6,7 +6,6 @@
     >
   </div>
   <div v-else>
-    <BaseButton>Go to checkout</BaseButton>
     <ChoosenItem
       v-for="product in cartStore.addedProducts"
       :product
@@ -20,7 +19,6 @@
 <script setup>
 import { useCartStore } from '../stores/cart.js';
 import ChoosenItem from '../components/ChoosenItem.vue';
-import BaseButton from '../components/BaseButton.vue';
 
 const cartStore = useCartStore();
 
