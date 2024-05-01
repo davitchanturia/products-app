@@ -1,7 +1,75 @@
-# Vue 3 + Vite
+<h1 style="text-align:center;">Products app</h1>
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Table of Contents
 
-## Recommended IDE Setup
+* [Prerequisites](#req)
+* [Packages](#packages)
+* [Getting Started](#gettingStarted)
+* [Resources](#RESOURCES)
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+#
+<h2 id="req">Prerequisites:</h2>
+
+
+<table>
+    <tr>
+        <td>*</td>
+        <td>npm 10.5.05</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>node 20.12.1</td>
+    </tr>
+</table>
+
+<h2 id="packages">packages:</h2>
+
+<table>
+    <tr>
+        <td>*</td>
+        <td>Tailwind css</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>Axios</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>Pinia</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>Vue Router</td>
+    </tr>
+</table>
+
+<h2 id="gettingStarted">Getting Started</h2>
+
+1\. To set up local environment first, you need to clone repository from github:
+```sh
+git@github.com:davitchanturia/products-app.git
+```
+2\. Then navigate into the repository
+```sh
+cd products-app
+```
+3\. create .env from .env example and set value for each variable
+```sh
+cp .env.example .env
+```
+4\. Run the command to install all the dependencies
+```sh
+npm install
+```
+5\. Run the command to start the development server
+```sh
+npm run dev
+```
+<h2 id="RESOURCES">Resources</h2>
+
+This is application's frontend side. It uses express.js as an api. you can check api repository [here](https://github.com/davitchanturia/products-app-back)
+
+
+  1.Backend Repository - https://github.com/RedberryInternship/davitchanturia-movie-quotes
+
+  2.Swagger Documentation - https://movie-quotes.chanturia.redberryinternship.ge/swagger
